@@ -29,7 +29,7 @@
   become: true
   tags: victoriametrics
 
-- name: check if is installed
+- name: check if victoriametrics is installed
   stat:
     path: "/usr/local/bin/victoriametrics"
   register: __victoriametrics_is_installed
