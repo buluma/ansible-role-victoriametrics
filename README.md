@@ -1,58 +1,88 @@
-# Ansible Role: VictoriaMetrics
+# [victoriametrics](#victoriametrics)
 
-[![ubuntu-18](https://img.shields.io/badge/ubuntu-18.x-orange?style=flat&logo=ubuntu)](https://ubuntu.com/)
-[![ubuntu-20](https://img.shields.io/badge/ubuntu-20.x-orange?style=flat&logo=ubuntu)](https://ubuntu.com/)
-[![debian-9](https://img.shields.io/badge/debian-9.x-orange?style=flat&logo=debian)](https://www.debian.org/)
-[![debian-10](https://img.shields.io/badge/debian-10.x-orange?style=flat&logo=debian)](https://www.debian.org/
+Ansible role for installing and configuring victoriametrics storage backend
 
-[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg?style=flat)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/OnkelDom/ansible-role-victoriametrics?style=flat)](https://github.com/OnkelDom/ansible-role-victoriametrics/issues)
-[![GitHub tag](https://img.shields.io/github/tag/OnkelDom/ansible-role-victoriametrics.svg?style=flat)](https://github.com/OnkelDom/ansible-role-victoriametrics/tags)
+|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|---------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-victoriametrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-victoriametrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoriametrics)|[![quality](https://img.shields.io/ansible/quality/58577)](https://galaxy.ansible.com/buluma/victoriametrics)|[![downloads](https://img.shields.io/ansible/role/d/58577)](https://galaxy.ansible.com/buluma/victoriametrics)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|
 
-## Description
+## [Example Playbook](#example-playbook)
 
-Deploy [victoriametrics](https://github.com/victoriametrics/victoriametrics) monitoring system using ansible.
-
-## Requirements
-
-- Ansible >= 2.9 (It might work on previous versions, but we cannot guarantee it)
-
-## Role Variables
-
-All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) file as well as in table below.
-
-| Name           | Default Value | Description                        |
-| -------------- | ------------- | -----------------------------------|
-| `proxy_env` | {} | Proxy environment variables |
-| `victoriametrics_version` | 1.57.1 | victoriametrics package version. Also accepts `latest` as parameter. Only victoriametrics 2.x is supported |
-| `victoriametrics_config_dir` | /etc/victoriametrics | Path to directory with victoriametrics configuration |
-| `victoriametrics_data_dir` | /var/lib/victoriametrics | Path to directory with victoriametrics database |
-| `victoriametrics_binary_install_dir` | /usr/local/bin | Path to directory with victoriametrics binaries |
-| `victoriametrics_system_user` | prometheus | victoriametrics system user |
-| `victoriametrics_system_group` | victoriametrics | victoriametrics system group |
-| `victoriametrics_limit_nofile` | 16384 | set nofile limit in systemd unit |
-| `victoriametrics_web_listen_address` | "0.0.0.0" | Address on which victoriametrics will be listening |
-| `victoriametrics_web_listen_port` | 8428 | Port on which victoriametrics will be listening |
-| `victoriametrics_log_level` | warn | Set loglevel |
-| `victoriametrics_log_format` | json | Set logformat |
-| `victoriametrics_prometheus_config` | {} | define prometheus config |
-| `victoriametrics_config` | [] | define victoriametrics environment variables - [List Flags](https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/docs/Single-server-VictoriaMetrics.md#list-of-command-line-flags) |
-
-## Example
-
-### Playbook
-
+This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
 ```yaml
 ---
-- hosts: all
+- name: Converge
+  hosts: all
+  become: true
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
   roles:
-  - onkeldom.victoriametrics
+    - role: buluma.victoriametrics
 ```
 
-## Contributing
 
-See [contributor guideline](CONTRIBUTING.md).
+## [Role Variables](#role-variables)
 
-## License
+The default values for the variables are set in `defaults/main.yml`:
+```yaml
+---
+proxy_env: {}
+victoriametrics_version: 1.57.1
+victoriametrics_web_listen_address: 0.0.0.0
+victoriametrics_web_listen_port: 8428
+victoriametrics_binary_install_dir: /usr/local/bin
+victoriametrics_system_user: "{{ victoriametrics_user | default('prometheus') }}"
+victoriametrics_system_group: "{{ victoriametrics_group | default('prometheus') }}"
+victoriametrics_data_dir: /var/lib/victoriametrics
+victoriametrics_config_dir: /etc/victoriametrics
+victoriametrics_log_level: warn
+victoriametrics_log_format: json
+victoriametrics_prometheus_config: {}
+victoriametrics_limit_nofile: 16384
+victoriametrics_config:
+  storageDataPath: "{{ victoriametrics_data_dir }}"```
 
-This project is licensed under MIT License. See [LICENSE](/LICENSE) for more details.
+## [Requirements](#requirements)
+
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-victoriametrics/blob/main/requirements.txt).
+
+
+## [Context](#context)
+
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
+
+Here is an overview of related roles:
+
+![dependencies](https://raw.githubusercontent.com/buluma/ansible-role-victoriametrics/png/requirements.png "Dependencies")
+
+## [Compatibility](#compatibility)
+
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
+
+|container|tags|
+|---------|----|
+|debian|all|
+|ubuntu|focal, bionic|
+
+The minimum version of Ansible required is 2.9, tests have been done to:
+
+- The previous version.
+- The current version.
+- The development version.
+
+
+
+If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-victoriametrics/issues)
+
+## [License](#license)
+
+Apache-2.0
+
+## [Author Information](#author-information)
+
+[Michael Buluma](https://buluma.github.io/)

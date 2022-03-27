@@ -14,18 +14,14 @@ molecule:
   retry: 1
   parallel:
     matrix:
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
-      - image: "docker-ubuntu-systemd"
-        tag: "bionic"
       - image: "debian-systemd"
         tag: "latest"
       - image: "debian-systemd"
         tag: "bookworm"
-      - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
-        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "focal"
+      - image: "docker-ubuntu-systemd"
+        tag: "bionic"
 
 testing:
   script:
@@ -35,18 +31,14 @@ testing:
   retry: 1
   parallel:
     matrix:
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
-      - image: "docker-ubuntu-systemd"
-        tag: "bionic"
       - image: "debian-systemd"
         tag: "latest"
       - image: "debian-systemd"
         tag: "bookworm"
-      - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
-        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "focal"
+      - image: "docker-ubuntu-systemd"
+        tag: "bionic"
 
 galaxy:
   script:
@@ -58,15 +50,11 @@ role_testing:
   retry: 1
   parallel:
     matrix:
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
-      - image: "docker-ubuntu-systemd"
-        tag: "bionic"
       - image: "debian-systemd"
         tag: "latest"
       - image: "debian-systemd"
         tag: "bookworm"
-      - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
-        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "focal"
+      - image: "docker-ubuntu-systemd"
+        tag: "bionic"

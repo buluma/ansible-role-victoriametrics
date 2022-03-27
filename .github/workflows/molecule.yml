@@ -36,18 +36,14 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "docker-ubuntu-systemd"
-            tag: "focal"
-          - image: "docker-ubuntu-systemd"
-            tag: "bionic"
           - image: "debian-systemd"
             tag: "latest"
           - image: "debian-systemd"
             tag: "bookworm"
-          - image: "enterpriselinux"
-            tag: "7"
-          - image: "enterpriselinux"
-            tag: "latest"
+          - image: "docker-ubuntu-systemd"
+            tag: "focal"
+          - image: "docker-ubuntu-systemd"
+            tag: "bionic"
     steps:
       - name: checkout
         uses: actions/checkout@v3
