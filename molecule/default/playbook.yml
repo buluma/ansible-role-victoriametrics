@@ -5,4 +5,4 @@
   any_errors_fatal: true
 
   roles:
-    - role: ansible-role-victoriametrics
+    - role: buluma.victoriametrics
