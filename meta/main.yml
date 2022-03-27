@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: victoriametrics
+  role-name: victoriametrics
   author: Michael Buluma
   description: Ansible role for installing and configuring victoriametrics storage backend
   license: "Apache-2.0"
