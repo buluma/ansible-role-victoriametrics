@@ -4,7 +4,7 @@ Role for VictoriaMetrics
 
 |GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
 |------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-victoriametrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-victoria_metrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoria_metrics)|[![quality](https://img.shields.io/ansible/quality/58573)](https://galaxy.ansible.com/buluma/victoriametrics)|[![downloads](https://img.shields.io/ansible/role/d/58573)](https://galaxy.ansible.com/buluma/victoriametrics)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|
+|[![github](https://github.com/buluma/ansible-role-victoriametrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-victoriametrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoriametrics)|[![quality](https://img.shields.io/ansible/quality/58573)](https://galaxy.ansible.com/buluma/victoriametrics)|[![downloads](https://img.shields.io/ansible/role/d/58573)](https://galaxy.ansible.com/buluma/victoriametrics)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -17,6 +17,8 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
   gather_facts: yes
 
   roles:
+    - role: buluma.bootstrap
+    - role: buluma.ca
     - role: buluma.victoriametrics
 ```
 
@@ -44,6 +46,14 @@ victoriametrics_install_vmutil: false
 
 - pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-victoriametrics/blob/main/requirements.txt).
 
+## [Status of used roles](#status-of-requirements)
+
+The following roles are used to prepare a system. You can prepare your system in another way.
+
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-bootstrap)|
+|[buluma.ca](https://galaxy.ansible.com/buluma/ca)|[![Build Status GitHub](https://github.com/buluma/ansible-role-ca/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-ca/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-ca/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-ca)|
 
 ## [Context](#context)
 
