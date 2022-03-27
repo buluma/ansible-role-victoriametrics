@@ -14,8 +14,6 @@ molecule:
   retry: 1
   parallel:
     matrix:
-      - image: "alpine-openrc"
-        tag: "latest"
       - image: "debian-systemd"
         tag: "latest"
       - image: "debian-systemd"
@@ -43,8 +41,6 @@ testing:
   retry: 1
   parallel:
     matrix:
-      - image: "alpine-openrc"
-        tag: "latest"
       - image: "debian-systemd"
         tag: "latest"
       - image: "debian-systemd"
@@ -66,16 +62,14 @@ testing:
 
 galaxy:
   script:
-    - ansible-galaxy role info buluma.victoriametrics
+    - ansible-galaxy role info buluma.victoria_metrics
 
 role_testing:
   script:
-    - image=${image} tag=${tag} ansible-galaxy install buluma.victoriametrics
+    - image=${image} tag=${tag} ansible-galaxy install buluma.victoria_metrics
   retry: 1
   parallel:
     matrix:
-      - image: "alpine-openrc"
-        tag: "latest"
       - image: "debian-systemd"
         tag: "latest"
       - image: "debian-systemd"

@@ -36,8 +36,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "alpine-openrc"
-            tag: "latest"
           - image: "debian-systemd"
             tag: "latest"
           - image: "debian-systemd"
