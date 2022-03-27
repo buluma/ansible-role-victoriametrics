@@ -34,8 +34,8 @@
   file:
     path: /usr/local/bin/victoria-metrics-prod
     state: absent
-  when:  victoriametrics_is_installed.stat.exists == True and
-         victoriametrics_version not in victoriametrics_current_version.stderr
+  when: victoriametrics_is_installed.stat.exists == True and
+        victoriametrics_version not in victoriametrics_current_version.stderr
 
 - name: Download and unarchive VictoriaMetrics release binary
   unarchive:

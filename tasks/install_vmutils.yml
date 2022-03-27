@@ -3,9 +3,9 @@
   file:
     path: /usr/local/bin/vm*
     state: absent
-  when:  victoriametrics_is_installed.stat.exists == True and
-         victoriametrics_version not in victoriametrics_current_version.stderr and
-         victoriametrics_install_vmutil == True
+  when: victoriametrics_is_installed.stat.exists == True and
+        victoriametrics_version not in victoriametrics_current_version.stderr and
+        victoriametrics_install_vmutil == True
 
 - name: Download and unarchive VictoriaMetrics release binary
   unarchive:
