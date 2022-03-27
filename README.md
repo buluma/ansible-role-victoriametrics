@@ -4,7 +4,7 @@ Ansible role for installing and configuring victoriametrics storage backend
 
 |GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
 |------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-victoriametrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-victoria_metrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoria_metrics/-/commits/master)|[![quality](https://img.shields.io/ansible/quality/58577)](https://galaxy.ansible.com/buluma/victoriametrics)|[![downloads](https://img.shields.io/ansible/role/d/58577)](https://galaxy.ansible.com/buluma/victoriametrics)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|
+|[![github](https://github.com/buluma/ansible-role-victoriametrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-victoriametrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoriametrics)|[![quality](https://img.shields.io/ansible/quality/58577)](https://galaxy.ansible.com/buluma/victoriametrics)|[![downloads](https://img.shields.io/ansible/role/d/58577)](https://galaxy.ansible.com/buluma/victoriametrics)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -44,7 +44,7 @@ The default values for the variables are set in `defaults/main.yml`:
 ```yaml
 ---
 proxy_env: {}
-victoriametrics_version: 1.75.0
+victoriametrics_version: 1.57.1
 victoriametrics_web_listen_address: 0.0.0.0
 victoriametrics_web_listen_port: 8428
 victoriametrics_binary_install_dir: /usr/local/bin
@@ -86,13 +86,10 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|alpine|all|
-|amazon|Candidate|
-|el|8|
 |debian|all|
 |fedora|all|
-|opensuse|all|
-|ubuntu|all|
+|el|all|
+|ubuntu|focal, bionic|
 
 The minimum version of Ansible required is 2.9, tests have been done to:
 
