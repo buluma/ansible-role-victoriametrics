@@ -5,6 +5,20 @@
     dest: /etc/systemd/system/victoriametrics.service
     owner: root
     group: root
-    mode: 0644
+    mode: 0640
   notify: Restart VictoriaMetrics service
-  no_log: True
+  no_log: true
+  when: victoriametrics_install_standalone
+
+- name: Copy cluster role systemd unit file
+  template:
+    src: "cluster.service.j2"
+    dest: "/etc/systemd/system/{{ item }}.service"
+    owner: root
+    group: root
+    mode: 0640
+  notify: Restart {{ item }} service
+  # no_log: True
+  with_items:
+    - "{{ victoriametrics_cluster_role }}"
+  when: victoriametrics_install_cluster

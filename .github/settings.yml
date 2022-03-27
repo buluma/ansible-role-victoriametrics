@@ -3,6 +3,6 @@
 # Ansible managed
 #
 repository:
-  description: Role for VictoriaMetrics
+  description: Deploy [victoriametrics](https://victoriametrics.com/) monitoring system.
   homepage: https://buluma.github.io/
-  topics: victoriametrics, ansible, molecule, tox, playbook, hacktoberfest
+  topics: vmutils, victoriametrics, prometheus, monitoring, ansible, molecule, tox, playbook, hacktoberfest

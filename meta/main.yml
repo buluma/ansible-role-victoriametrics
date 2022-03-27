@@ -1,31 +1,27 @@
 ---
 galaxy_info:
-  author: Michael Buluma
-  namespace: buluma
+  author: buluma
   role_name: victoriametrics
-  description: Role for VictoriaMetrics
-  company: ShadowNet
-  license: Apache-2.0
+  description: "Deploy [victoriametrics](https://victoriametrics.com/) monitoring system."
+  license: "Apache-2.0"
   min_ansible_version: 2.10
-  galaxy_tags:
-    - victoriametrics
+
   platforms:
-    # - name: Alpine
-    #   versions:
-    #     - all
-    - name: Debian
+    - name: "Ubuntu"
       versions:
-        - all
-    - name: EL
+        - "focal"
+        - "bionic"
+    - name: "Debian"
       versions:
-        - 8
-    - name: Fedora
+        - "all"
+    - name: "EL"
       versions:
-        - all
-    - name: OpenSUSE
-      versions:
-        - all
-    - name: Ubuntu
-      versions:
-        - all
+        - "all"
+
+  galaxy_tags:
+    - vmutils
+    - victoriametrics
+    - prometheus
+    - monitoring
+
 dependencies: []
