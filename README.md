@@ -17,7 +17,7 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
   gather_facts: yes
 
   roles:
-    - role: buluma.victoria_metrics
+    - role: buluma.victoriametrics
 ```
 
 
