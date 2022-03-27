@@ -15,11 +15,11 @@ galaxy_info:
         - focal
         - bionic
   galaxy_tags:
-  - system
-  - network
-  - linux
-  - monitoring
-  - prometheus
-  - node
-  - exporter
+    - system
+    - network
+    - linux
+    - monitoring
+    - prometheus
+    - node
+    - exporter
 dependencies: []
