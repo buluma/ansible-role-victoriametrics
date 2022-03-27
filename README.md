@@ -45,7 +45,8 @@ victoriametrics_log_format: json
 victoriametrics_prometheus_config: {}
 victoriametrics_limit_nofile: 16384
 victoriametrics_config:
-  storageDataPath: "{{ victoriametrics_data_dir }}"```
+  storageDataPath: "{{ victoriametrics_data_dir }}"
+```
 
 ## [Requirements](#requirements)
 

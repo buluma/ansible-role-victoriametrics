@@ -5,3 +5,6 @@
   - ./molecule/default/collections.yml
   - ./.tox
   - ./.cache
+
+skip_list:
+  - role-name
