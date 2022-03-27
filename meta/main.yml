@@ -1,12 +1,14 @@
 ---
 galaxy_info:
-  author: buluma
+  author: Michael Buluma
+  namespace: buluma
   role_name: victoriametrics
   description: Role for VictoriaMetrics
   company: ShadowNet
   license: Apache-2.0
   min_ansible_version: 2.10
-  galaxy_tags: []
+  galaxy_tags:
+    - victoriametrics
   platforms:
     - name: Alpine
       versions:
