@@ -28,4 +28,5 @@ galaxy_info:
     - prometheus
     - node
     - exporter
+    - victoriametrics
 dependencies: []
