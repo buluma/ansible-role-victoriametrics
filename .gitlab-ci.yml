@@ -62,11 +62,11 @@ testing:
 
 galaxy:
   script:
-    - ansible-galaxy role info buluma.victoria_metrics
+    - ansible-galaxy role info buluma.victoriametrics
 
 role_testing:
   script:
-    - image=${image} tag=${tag} ansible-galaxy install buluma.victoria_metrics
+    - image=${image} tag=${tag} ansible-galaxy install buluma.victoriametrics
   retry: 1
   parallel:
     matrix:
