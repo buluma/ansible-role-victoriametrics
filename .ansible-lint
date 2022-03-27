@@ -9,3 +9,8 @@ exclude_paths:
   - ./molecule/default/collections.yml
   - ./.tox
   - ./.cache
+
+skip_list:
+  - 'fqcn-builtins'
+  - 'literal-compare'
+  - 'command-instead-of-module'
