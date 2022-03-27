@@ -1,0 +1,4 @@
+---
+exceptions:
+  - variation: Alpine
+    reason: "/bin/sh: sudo: not found"

@@ -10,9 +10,9 @@ galaxy_info:
   galaxy_tags:
     - victoriametrics
   platforms:
-    - name: Alpine
-      versions:
-        - all
+    # - name: Alpine
+    #   versions:
+    #     - all
     - name: Debian
       versions:
         - all
