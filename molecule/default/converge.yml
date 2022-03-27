@@ -7,6 +7,6 @@
   roles:
     - role: buluma.bootstrap
     - role: buluma.python_pip
-    - role: buluma.ca
+    # - role: buluma.ca
     - role: buluma.ca_certificates
     - role: buluma.victoriametrics
