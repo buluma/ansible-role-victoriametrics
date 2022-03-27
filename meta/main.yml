@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role-name: victoriametrics
+  role_name: victoriametrics
   namespace: buluma
   author: Michael Buluma
   description: Ansible role for installing and configuring victoriametrics storage backend
