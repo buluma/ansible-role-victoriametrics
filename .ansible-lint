@@ -11,7 +11,8 @@ exclude_paths:
   - ./.cache
 
 skip_list:
-  - 'command-instead-of-module'
-  - 'fqcn-builtin'
-  - 'fqcn-builtins'
-  - 'literal-compare'
+  - command-instead-of-module
+  - fqcn-builtin
+  - fqcn-builtins
+  - literal-compare
+  - experimental

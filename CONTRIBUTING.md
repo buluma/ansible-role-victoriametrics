@@ -1,74 +1,97 @@
-# [Please contribute](#please-contribute)
+# Contributor Guideline
 
-You can really make a difference by:
+This document provides an overview of how you can participate in improving this project or extending it. We are
+grateful for all your help: bug reports and fixes, code contributions, documentation or ideas. Feel free to join, we
+appreciate your support!!
 
-- [Making an issue](https://help.github.com/articles/creating-an-issue/). A well described issue helps a lot. (Have a look at the [known issues](https://github.com/search?q=user%3Abuluma+is%3Aissue+state%3Aopen).)
-- [Making a pull request](https://services.github.com/on-demand/github-cli/open-pull-request-github) when you see the error in code.
+## Communication
 
-I'll try to help and take every contribution seriously.
+### GitHub repositories
 
-It's a great opportunity for me to learn how you use the role and also an opportunity to get into the habit of contributing to open source software.
+Much of the issues, goals and ideas are tracked in the respective projects in GitHub. Please use this channel to report
+bugs, ask questions, and request new features .
 
-## [Step by step](#step-by-step)
+## git and GitHub
 
-Here is how you can help, a lot of steps are related to GitHub, not specifically my roles.
+In order to contribute code please:
 
-### [1. Make an issue.](#1-make-an-issue)
+1. Fork the project on GitHub
+2. Clone the project
+3. Add changes (and tests)
+4. Commit and push
+5. Create a merge-request
 
-When you spot an issue, [create an issue](https://github.com/buluma/ansible-role-victoriametrics/issues).
+To have your code merged, see the expectations listed below.
 
-Making the issue help me and others to find similar problems in the future.
+You can find a well-written guide [here](https://help.github.com/articles/fork-a-repo).
 
-### [2. Fork the project.](#2-fork-the-project)
+Please follow common commit best-practices. Be explicit, have a short summary, a well-written description and
+references. This is especially important for the merge-request.
 
-On the top right side of [the repository on GitHub](https://github.com/buluma/ansible-role-victoriametrics), click `fork`. This copies everything to your GitHub namespace.
+Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCommitMessages) and
+[here](http://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message).
 
-### [3. Make the changes](#3-make-the-changes)
+## Releases
 
-In you own GitHub namespace, make the required changes.
+We try to stick to semantic versioning and our releases are automated. Release is created by assigning a keyword (in a
+way similar to travis [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build#Skipping-a-build)) to a
+commit with merge request. Available keywords are (square brackets are important!):
 
-I typically do that by cloning the repository (in your namespace) locally:
+* `[patch]`, `[fix]` - for PATCH version release
+* `[minor]`, `[feature]`, `[feat]` - for MINOR version release
+* `[major]`, `[breaking change]` - for MAJOR version release
 
-```
-git clone git@github.com:YOURNAMESPACE/ansible-role-victoriametrics.git
-```
+## Changelog
 
-Now you can start to edit on your laptop.
+Changelog is generateg automatically on every merged Pull Request and all information is taken from github issues, PRs
+and labels.
 
-### [4. Optionally: test your changes](#4-optionally-test-your-changes)
+## Expectations
 
-Install [molecule](https://molecule.readthedocs.io/en/stable/) and [Tox](https://tox.readthedocs.io/):
+### Keep it simple
 
-```
-pip install molecule tox ansible-lint docker
-```
+We try to provide production ready ansible roles which should be as much zero-conf as possible but this doesn't mean to
+overcomplicate things. Just follow [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
-And run `molecule test`. If you want to test a specific distribution, set `image` and optionally `tag`:
+### Be explicit
 
-```
-image=centos tag=7 molecule test
-```
+* Please avoid using nonsensical property and variable names.
+* Use self-describing attribute names for user configuration.
+* In case of failures, communicate what happened and why a failure occurs to the user. Make it easy to track the code
+or action that produced the error. Try to catch and handle errors if possible to provide improved failure messages.
 
-Once it start to work, you can test multiple version of Ansible:
 
-```
-image=centos tag=7 tox
-```
+### Add tests
 
-### [5. Optionally: Regenerate all dynamic content](#5-optionally-regenerate-all-dynamic-content)
+We are striving to use at least two test scenarios located in [/molecule](molecule) directory. First one
+([default](molecule/default)) is testing default configuration without any additional variables, second one
+([alternative](molecule/alternative)) is testing what happens when many variables from
+[/defaults/main.yml](defaults/main.yml) are changed. When adding new functionalities please add tests to proper
+scenarios. Tests are written in testinfra framework and are located in `/tests` subdirectory of scenario directory
+(for example default tests are in [/molecule/default/tests](molecule/default/tests)).
+More information about:
+  - [testinfra](http://testinfra.readthedocs.io/en/latest/index.html)
+  - [molecule](https://molecule.readthedocs.io/en/latest/index.html)
 
-You can use [Ansible Generator](https://github.com/buluma/ansible-generator) to regenerate all dynamic content.
+### Follow best practices
 
-If you don't do it, I'll do it later for you.
+Please follow [ansible best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html) and
+especially provide meaningful names to tasks and even comments where needed.
 
-### [6. Make a pull request](#6-make-a-pull-request)
+Our test framework automatically lints code with [`yamllint`](https://yamllint.readthedocs.io) and
+[`ansible-lint`](https://github.com/willthames/ansible-lint) programs so be sure to follow their rules.
 
-[GitHub](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) on pull requests.
+Remember: Code is generally read much more often than written.
 
-In the comment-box, you can [refer to the issue number](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls) by using #123, where 123 is the issue number.
+### Use Markdown
 
-### [7. Wait](#7-wait)
+Wherever possible, please refrain from any other formats and stick to simple markdown.
 
-Now I'll get a message that you've added some code. Thank you, really.
+## Requirements regarding roles design
 
-CI starts to test your changes. You can follow the progress on GitHub.
+We are trying to create the best and most secure installation method for non-containerized prometheus stack components.
+To accomplish this all roles need to support:
+
+- current and at least one previous ansible version (wherever possible we try to support 2 previous ansible versions)
+- systemd as the only available process manager
+- at least latest debian and CentOS distributions
