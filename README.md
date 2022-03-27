@@ -1,51 +1,85 @@
-Role Name
-=========
+# [victoria_metrics](#victoria_metrics)
 
-VictoriaMetrics
+Role for VictoriaMetrics
 
-Role Variables
---------------
+|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|---------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-victoria_metrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoria_metrics/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-victoria_metrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoria_metrics)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/victoria_metrics)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/victoria_metrics)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoria_metrics.svg)](https://github.com/buluma/ansible-role-victoria_metrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoria_metrics.svg)](https://github.com/buluma/ansible-role-victoria_metrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoria_metrics.svg)](https://github.com/buluma/ansible-role-victoria_metrics/pulls/)|
 
-```
+## [Example Playbook](#example-playbook)
+
+This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+```yaml
 ---
+- name: Converge
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - role: buluma.victoria_metrics
+```
+
+
+## [Role Variables](#role-variables)
+
+The default values for the variables are set in `defaults/main.yml`:
+```yaml
+---
+# defaults file for VictoriaMetrics
 victoriametrics_repo_url: "https://github.com/VictoriaMetrics/VictoriaMetrics"
-victoriametrics_download_url:  "{{ victoriametrics_repo_url }}/releases/download/{{ victoriametrics_version }}/victoria-metrics-{{ victoriametrics_version }}.tar.gz"
-victoriametrics_version: "v1.28.0"
+victoriametrics_download_url: "{{ victoriametrics_repo_url }}/releases/download/{{ victoriametrics_version }}/victoria-metrics-{{ victoriametrics_version }}.tar.gz"
+victoriametrics_vmutils_download_url: "{{ victoriametrics_repo_url }}/releases/download/{{ victoriametrics_version }}/vmutils-{{ victoriametrics_version }}.tar.gz"
+victoriametrics_version: "v1.75.0"
 victoriametrics_system_user: "victoriametrics"
 victoriametrics_system_group: "{{ victoriametrics_system_user }}"
-victoriametrics_delete_auth_key: "secret"
-victoriametrics_snapshot_auth_key: "secret"
-victoriametrics_service_args: ""
+victoriametrics_data_dir: "/var/lib/victoria-metrics/"
+victoriametrics_service_args:
+  storageDataPath: "{{ victoriametrics_data_dir }}"
+victoriametrics_max_open_files: 2097152
+victoriametrics_install_vmutil: false
 ```
 
+## [Requirements](#requirements)
 
-Example Playbook
-----------------
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-victoria_metrics/blob/main/requirements.txt).
 
-```
-- hosts: servers
-    roles:
-        - "ansible-victoriametrics-role"
-```
 
-Tests
-------------
-```
-# deps
-gem install kitchen-ansible --no-document
-gem install kitchen-vagrant --no-document
+## [Context](#context)
 
-# test
-kitchen converge
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
 
-```
+Here is an overview of related roles:
 
-License
--------
+![dependencies](https://raw.githubusercontent.com/buluma/ansible-role-victoria_metrics/png/requirements.png "Dependencies")
 
-BSD
+## [Compatibility](#compatibility)
 
-Author Information
-------------------
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
 
-sre@dreamteam.gg
+|container|tags|
+|---------|----|
+|alpine|all|
+|debian|all|
+|el|8|
+|fedora|all|
+|opensuse|all|
+|ubuntu|all|
+
+The minimum version of Ansible required is 2.1, tests have been done to:
+
+- The previous version.
+- The current version.
+- The development version.
+
+
+
+If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-victoria_metrics/issues)
+
+## [License](#license)
+
+Apache-2.0
+
+## [Author Information](#author-information)
+
+[buluma](https://buluma.github.io/)
