@@ -22,7 +22,7 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
       changed_when: false
 
   roles:
-    - role: apps_victoriametrics
+    - role: buluma.victoriametrics
 ```
 
 The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
@@ -71,6 +71,13 @@ victoriametrics_max_open_files: 2097152
 
 - pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-victoriametrics/blob/main/requirements.txt).
 
+## [Status of used roles](#status-of-requirements)
+
+The following roles are used to prepare a system. You can prepare your system in another way.
+
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[buluma.victoriametrics](https://galaxy.ansible.com/buluma/victoriametrics)|[![Build Status GitHub](https://github.com/buluma/ansible-role-victoriametrics/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-victoriametrics/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-victoriametrics)|
 
 ## [Context](#context)
 
