@@ -1,6 +1,6 @@
 ---
 - name: restart victoriametrics
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
     name: victoriametrics
     state: restarted
@@ -8,7 +8,7 @@
   tags: victoriametrics
 
 - name: reload victoriametrics
-  systemd:
+  ansible.builtin.systemd:
     name: victoriametrics
     state: reloaded
   become: true
