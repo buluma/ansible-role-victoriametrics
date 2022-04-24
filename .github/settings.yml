@@ -5,4 +5,4 @@
 repository:
   description: Ansible role for installing and configuring victoriametrics storage backend
   homepage: https://buluma.github.io/
-  topics: system, network, linux, monitoring, prometheus, node, exporter, victoriametrics, ansible, molecule, tox, playbook, hacktoberfest
+  topics: system, network, linux, monitoring, prometheus, node, exporter, victoriametrics, victoriametricscluster, ansible, molecule, tox, playbook, hacktoberfest
