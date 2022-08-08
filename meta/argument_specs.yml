@@ -1,0 +1,10 @@
+---
+#
+# Ansible managed
+#
+argument_specs:
+  main:
+    short_description: Ansible role for installing and configuring victoriametrics storage backend
+    description: >
+      Ansible role for installing and configuring victoriametrics storage backend
+    author: Michael Buluma
