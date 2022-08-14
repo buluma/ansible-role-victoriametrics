@@ -73,16 +73,6 @@
       tags: victoriametrics
       when: victoriametrics_version == "latest"
 
-# - name: set fact for version split
-#   set_fact:
-#     victoriametrics_version2: "{{ __victoriametrics_current_version_output.stdout_lines[0].split('-')[5]|regex_search('[0-9.]+') }}"
-#   tags: victoriametrics
-#
-# - name: defined version
-#   tags: victoriametrics
-#   debug:
-#     msg: "{{ victoriametrics_version2 }}"
-
 - block:
     - name: get checksum list from github
       ansible.builtin.set_fact:
@@ -134,7 +124,6 @@
         owner: root
         group: root
       notify: restart victoriametrics
-      # when: not ansible_check_mode  # duplicate
       become: true
       tags: victoriametrics
       when: (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
