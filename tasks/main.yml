@@ -69,23 +69,23 @@
       set_fact:
         victoriametrics_version: "{{ _latest_release.json.tag_name[1:] }}"
       tags: victoriametrics
-    when: victoriametrics_version == "latest"
-    delegate_to: localhost
-    run_once: true
-    become: true
-    tags: victoriametrics
+      when: victoriametrics_version == "latest"
+      delegate_to: localhost
+      run_once: true
+      become: true
+      tags: victoriametrics
 
-  - name: set fact for version split
-    set_fact:
-      victoriametrics_version2: "{{ __victoriametrics_current_version_output.stdout_lines[0].split('-')[5]|regex_search('[0-9.]+') }}"
-    tags: victoriametrics
-    when: __victoriametrics_current_version_output.stdout_lines is defined
+    - name: set fact for version split
+      set_fact:
+        victoriametrics_version2: "{{ __victoriametrics_current_version_output.stdout_lines[0].split('-')[5]|regex_search('[0-9.]+') }}"
+      tags: victoriametrics
+      when: __victoriametrics_current_version_output.stdout_lines is defined
 
-  - name: defined version
-    tags: victoriametrics
-    debug:
-      msg: "{{ victoriametrics_version2 }}"
-    when: __victoriametrics_current_version_output.stdout_lines is defined
+    - name: defined version
+      tags: victoriametrics
+      debug:
+        msg: "{{ victoriametrics_version2 }}"
+      when: __victoriametrics_current_version_output.stdout_lines is defined
 
 - block:
     - name: get checksum list from github
@@ -140,7 +140,7 @@
       when: not ansible_check_mode
       become: true
       tags: victoriametrics
-    when: (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
+      when: (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
 
 - block:
     - name: create config directory
@@ -163,7 +163,7 @@
       notify: restart victoriametrics
       become: true
       tags: victoriametrics
-    when: victoriametrics_prometheus_config | length > 0
+      when: victoriametrics_prometheus_config | length > 0
 
 - name: create systemd service unit
   template:
