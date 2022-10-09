@@ -89,7 +89,8 @@
 - block:
     - name: Get checksum list from github
       ansible.builtin.set_fact:
-        _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
+        # _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
+        _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-linux-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
       environment: "{{ proxy_env }}"
       run_once: true
       become: true
@@ -103,7 +104,7 @@
       ansible.builtin.set_fact:
         victoriametrics_checksum: "{{ item.split(' ')[0] }}"
       with_items: "{{ _checksums }}"
-      # when: "('victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '.tar.gz') in item"
+      when: "('victoria-metrics-linux-' + go_arch + '-v' + victoriametrics_version + '.tar.gz') in item"
       become: true
       tags: victoriametrics
 
@@ -141,10 +142,11 @@
         owner: root
         group: root
       notify: Restart victoriametrics
-      when: not ansible_check_mode
       become: true
       tags: victoriametrics
-      when: (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
+      when:
+        - not ansible_check_mode
+        - (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
 
 - block:
     - name: Create config directory
