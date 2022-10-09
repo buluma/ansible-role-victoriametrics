@@ -95,11 +95,15 @@
       become: true
       tags: victoriametrics
 
+    - debug: var=_checksums
+
+    - fail:
+
     - name: "Get checksum for {{ go_arch }} architecture"
       ansible.builtin.set_fact:
         victoriametrics_checksum: "{{ item.split(' ')[0] }}"
       with_items: "{{ _checksums }}"
-      when: "('victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '.tar.gz') in item"
+      # when: "('victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '.tar.gz') in item"
       become: true
       tags: victoriametrics
 
