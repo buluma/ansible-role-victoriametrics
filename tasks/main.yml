@@ -95,9 +95,9 @@
       become: true
       tags: victoriametrics
 
-    - debug: var=_checksums
+    - ansible.builtin.debug: var=_checksums
 
-    - fail:
+    - ansible.builtin.fail:
 
     - name: "Get checksum for {{ go_arch }} architecture"
       ansible.builtin.set_fact:
