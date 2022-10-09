@@ -2,6 +2,8 @@
 - name: Converge
   hosts: all
   become: true
+  vars:
+    victoriametrics_version: 1.82.0
 
   pre_tasks:
     - name: Update apt cache.
