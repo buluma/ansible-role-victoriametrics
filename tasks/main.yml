@@ -98,7 +98,11 @@
 
     - ansible.builtin.debug: var=_checksums
 
-    - ansible.builtin.fail:
+    - ansible.builtin.debug: var=go_arch
+
+    - ansible.builtin.debug: var=ansible_system
+
+    # - ansible.builtin.fail:
 
     - name: "Get checksum for {{ go_arch }} architecture"
       ansible.builtin.set_fact:
@@ -110,7 +114,7 @@
 
     - name: Download binary to local folder
       ansible.builtin.get_url:
-        url: "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v{{ victoriametrics_version }}/victoria-metrics-{{ go_arch }}-v{{ victoriametrics_version }}.tar.gz"
+        url: "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v{{ victoriametrics_version }}/victoria-metrics-linux-{{ go_arch }}-v{{ victoriametrics_version }}.tar.gz"
         dest: "/tmp/victoriametrics-{{ victoriametrics_version }}.linux-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ victoriametrics_checksum }}"
         mode: 0644
