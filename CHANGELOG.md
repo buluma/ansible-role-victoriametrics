@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-victoriametrics/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.0.3...HEAD)
+
+**Closed issues:**
+
+- download binary to local folder: sudo: a password is required [\#4](https://github.com/buluma/ansible-role-victoriametrics/issues/4)
+
+## [v2.0.3](https://github.com/buluma/ansible-role-victoriametrics/tree/v2.0.3) (2022-10-09)
+
+[Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.0.2...v2.0.3)
+
 ## [v2.0.2](https://github.com/buluma/ansible-role-victoriametrics/tree/v2.0.2) (2022-08-14)
 
 [Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.0.1...v2.0.2)
