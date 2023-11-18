@@ -1,4 +1,4 @@
-# [victoriametrics](#victoriametrics)
+# [Ansible role victoriametrics](#victoriametrics)
 
 Ansible role for installing and configuring victoriametrics storage backend
 
