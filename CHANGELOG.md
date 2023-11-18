@@ -6,6 +6,8 @@
 
 **Closed issues:**
 
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#13](https://github.com/buluma/ansible-role-victoriametrics/issues/13)
+- Update action [\#12](https://github.com/buluma/ansible-role-victoriametrics/issues/12)
 - download binary to local folder: sudo: a password is required [\#4](https://github.com/buluma/ansible-role-victoriametrics/issues/4)
 
 ## [v2.0.3](https://github.com/buluma/ansible-role-victoriametrics/tree/v2.0.3) (2022-10-09)
