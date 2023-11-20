@@ -15,9 +15,6 @@ exclude_paths:
 
 skip_list:
   - yaml[truthy]
-  - name[missing]
-  - name[template]
-  - no-free-form
 
 enable_list:
   - name[prefix]
