@@ -98,11 +98,11 @@
       become: true
       tags: victoriametrics
 
-    - ansible.builtin.debug: var=_checksums
+    # - ansible.builtin.debug: var=_checksums
 
-    - ansible.builtin.debug: var=go_arch
+    # - ansible.builtin.debug: var=go_arch
 
-    - ansible.builtin.debug: var=ansible_system
+    # - ansible.builtin.debug: var=ansible_system
 
     # - ansible.builtin.fail:
 
