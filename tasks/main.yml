@@ -47,7 +47,8 @@
   tags: victoriametrics
   check_mode: false
 
-- block:
+- name: Install latest
+  block:
     - name: Get latest release
       ansible.builtin.uri:
         url: "https://api.github.com/repos/VictoriaMetrics/VictoriaMetrics/releases/latest"
@@ -86,7 +87,8 @@
         msg: "{{ victoriametrics_version2 }}"
       when: __victoriametrics_current_version_output.stdout_lines is defined
 
-- block:
+- name: Verify checksum
+  block:
     - name: Get checksum list from github
       ansible.builtin.set_fact:
         # _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
@@ -152,7 +154,8 @@
         - not ansible_check_mode
         - (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
 
-- block:
+- name: Configure
+  block:
     - name: Create config directory
       ansible.builtin.file:
         path: "{{ victoriametrics_config_dir }}"
