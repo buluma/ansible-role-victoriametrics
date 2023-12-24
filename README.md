@@ -1,10 +1,10 @@
-# [Ansible role victoriametrics](#victoriametrics)
+# Ansible role [victoriametrics](https://galaxy.ansible.com/ui/standalone/roles/buluma/victoriametrics/documentation)
 
 Ansible role for installing and configuring victoriametrics storage backend
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-victoriametrics/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-victoriametrics/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-victoriametrics/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-victoriametrics.svg)](https://github.com/buluma/ansible-role-victoriametrics/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/victoriametrics)](https://galaxy.ansible.com/ui/standalone/roles/buluma/victoriametrics/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -115,9 +115,7 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
