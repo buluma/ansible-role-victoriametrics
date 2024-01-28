@@ -75,7 +75,7 @@
 
     - name: Set fact for version split
       ansible.builtin.set_fact:
-        victoriametrics_version2: "{{ __victoriametrics_current_version_output.stdout_lines[0].split('-')[5]|regex_search('[0-9.]+') }}"
+        victoriametrics_version2: "{{ __victoriametrics_current_version_output.stdout_lines[0].split('-')[5] | regex_search('[0-9.]+') }} "
       tags: victoriametrics
       when: __victoriametrics_current_version_output.stdout_lines is defined
 
@@ -104,7 +104,7 @@
 
     # - ansible.builtin.fail:
 
-    - name: "Get checksum for {{ go_arch }} architecture"
+    - name: "Get checksum for architecture {{ go_arch }}"
       ansible.builtin.set_fact:
         victoriametrics_checksum: "{{ item.split(' ')[0] }}"
       with_items: "{{ _checksums }}"
