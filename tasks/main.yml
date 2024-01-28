@@ -38,8 +38,6 @@
 
 - name: Gather currently installed version (if any)
   ansible.builtin.command: "/usr/local/bin/victoriametrics -version"
-  args:
-    warn: false
   changed_when: false
   register: __victoriametrics_current_version_output
   when: __victoriametrics_is_installed.stat.exists
