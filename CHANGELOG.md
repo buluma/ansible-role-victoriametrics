@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-victoriametrics/tree/HEAD)
+## [v2.1.0](https://github.com/buluma/ansible-role-victoriametrics/tree/v2.1.0) (2024-01-28)
 
-[Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.0.3...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.0.3...v2.1.0)
 
 **Closed issues:**
 
