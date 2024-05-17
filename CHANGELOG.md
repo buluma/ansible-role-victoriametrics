@@ -1,5 +1,9 @@
 # Changelog
 
+## [v24.3.31](https://github.com/buluma/ansible-role-victoriametrics/tree/v24.3.31) (2024-03-30)
+
+[Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.1.0...v24.3.31)
+
 ## [v2.1.0](https://github.com/buluma/ansible-role-victoriametrics/tree/v2.1.0) (2024-01-28)
 
 [Full Changelog](https://github.com/buluma/ansible-role-victoriametrics/compare/v2.0.3...v2.1.0)
