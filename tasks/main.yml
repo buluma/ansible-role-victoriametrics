@@ -90,7 +90,8 @@
     - name: Get checksum list from github
       ansible.builtin.set_fact:
         # _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
-        _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-linux-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
+        _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-linux-'
+          + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
       environment: "{{ proxy_env }}"
       run_once: true
       become: true
@@ -114,10 +115,11 @@
 
     - name: Download binary to local folder
       ansible.builtin.get_url:
-        url: "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v{{ victoriametrics_version }}/victoria-metrics-linux-{{ go_arch }}-v{{ victoriametrics_version }}.tar.gz"
+        url: "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v{{ victoriametrics_version }}/victoria-metrics-linux-{{ go_arch }}-v{{ victoriametrics_version
+          }}.tar.gz"
         dest: "/tmp/victoriametrics-{{ victoriametrics_version }}.linux-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ victoriametrics_checksum }}"
-        mode: 0644
+        mode: "0644"
       environment: "{{ proxy_env }}"
       register: _download_binary
       until: _download_binary is succeeded
@@ -142,7 +144,7 @@
       ansible.builtin.copy:
         src: "/tmp/victoria-metrics-prod"
         dest: "{{ victoriametrics_binary_install_dir }}/victoriametrics"
-        mode: 0755
+        mode: "0755"
         owner: root
         group: root
       notify: Restart victoriametrics
@@ -150,7 +152,8 @@
       tags: victoriametrics
       when:
         - not ansible_check_mode
-        - (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') != victoriametrics_version)
+        - (not __victoriametrics_is_installed.stat.exists) or (__victoriametrics_current_version_output.stdout_lines[0].split("-")[5]|regex_search('[0-9.]+') !=
+          victoriametrics_version)
 
 - name: Configure
   block:
@@ -160,7 +163,7 @@
         state: directory
         owner: "{{ victoriametrics_system_user }}"
         group: "{{ victoriametrics_system_group }}"
-        mode: 0755
+        mode: "0755"
       become: true
       tags: victoriametrics
 
@@ -170,7 +173,7 @@
         dest: "{{ victoriametrics_config_dir }}/config.yml"
         owner: "{{ victoriametrics_system_user }}"
         group: "{{ victoriametrics_system_group }}"
-        mode: 0644
+        mode: "0644"
       notify: Restart victoriametrics
       become: true
       tags: victoriametrics
@@ -182,7 +185,7 @@
     dest: /etc/systemd/system/victoriametrics.service
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart victoriametrics
   become: true
   tags: victoriametrics
