@@ -1,9 +1,9 @@
 ---
-- name: Verify
-  hosts: all
-  become: yes
-  gather_facts: no
+  - name: Verify
+    hosts: all
+    become: yes
+    gather_facts: no
 
-  tasks:
-    - name: Check if connection still works
-      ansible.builtin.ping:
+    tasks:
+      - name: Check if connection still works
+        ansible.builtin.ping:
