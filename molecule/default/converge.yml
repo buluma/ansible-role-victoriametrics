@@ -1,15 +1,15 @@
 ---
-  - name: Converge
-    hosts: all
-    become: true
-    vars:
-      victoriametrics_version: 1.82.0
+- name: Converge
+  hosts: all
+  become: true
+  vars:
+    victoriametrics_version: 1.82.0
 
-    pre_tasks:
-      - name: Update apt cache.
-        apt: update_cache=yes cache_valid_time=600
-        when: ansible_os_family == 'Debian'
-        changed_when: false
+  pre_tasks:
+  - name: Update apt cache.
+    apt: update_cache=yes cache_valid_time=600
+    when: ansible_os_family == 'Debian'
+    changed_when: false
 
-    roles:
-      - role: buluma.victoriametrics
+  roles:
+  - role: buluma.victoriametrics
