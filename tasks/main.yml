@@ -90,7 +90,8 @@
     - name: Get checksum list from github
       ansible.builtin.set_fact:
         # _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-' + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
-        _checksums: "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-linux-'
+        _checksums:
+          "{{ lookup('url', 'https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v' + victoriametrics_version + '/victoria-metrics-linux-'
           + go_arch + '-v' + victoriametrics_version + '_checksums.txt', wantlist=True) | list }}"
       environment: "{{ proxy_env }}"
       run_once: true
@@ -115,7 +116,8 @@
 
     - name: Download binary to local folder
       ansible.builtin.get_url:
-        url: "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v{{ victoriametrics_version }}/victoria-metrics-linux-{{ go_arch }}-v{{ victoriametrics_version
+        url:
+          "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v{{ victoriametrics_version }}/victoria-metrics-linux-{{ go_arch }}-v{{ victoriametrics_version
           }}.tar.gz"
         dest: "/tmp/victoriametrics-{{ victoriametrics_version }}.linux-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ victoriametrics_checksum }}"
