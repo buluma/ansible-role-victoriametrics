@@ -102,7 +102,7 @@
 
     # - ansible.builtin.debug: var=go_arch
 
-    # - ansible.builtin.debug: var=ansible_system
+    # - ansible.builtin.debug: var=ansible_facts.system
 
     # - ansible.builtin.fail:
 
